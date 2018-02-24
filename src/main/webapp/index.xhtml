@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+       xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+
+    <h:form id="personForm">
+        <h:dataTable id="personTable" value="#{dAO_Person.people}" var="per">
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                <h:outputText value="#{per.id}"></h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header">FNAME</f:facet>
+                <h:outputText value="#{per.fname}"></h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header">LNAME</f:facet>
+                <h:outputText value="#{per.lname}"></h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header">AGE</f:facet>
+                <h:outputText value="#{per.age}"></h:outputText>
+            </h:column>
+        </h:dataTable>
+        <h:inputText value="#{dAO_Person.id}"></h:inputText>
+        <h:inputText value="#{dAO_Person.fname}"></h:inputText>
+        <h:inputText value="#{dAO_Person.lname}"></h:inputText>
+        <h:inputText value="#{dAO_Person.age}"></h:inputText>
+        <h:commandButton value="Create" action="#{dAO_Person.create}">
+            <f:ajax render="personForm:personTable"></f:ajax>
+        </h:commandButton>
+        <h:commandButton value="Delete" action="#{dAO_Person.delete}"></h:commandButton>
+        <h:commandButton value="Update" action="#{dAO_Person.update}"></h:commandButton>
+    </h:form>
+</f:view>
+</html>
